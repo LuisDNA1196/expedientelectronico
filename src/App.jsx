@@ -1,16 +1,22 @@
+import { Routes, Route } from "react-router";
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 
 function App() {
   return (
-    <div className="flex">
-      <Sidebar />
+    
       <div className="w-full">
         <Navbar />
-        <Login />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registrar" element={<h1>Registrar Paciente</h1>} />
+          <Route path="/buscar" element={<h1>Buscar Paciente</h1>} />
+          <Route path="/imagenes" element={<h1>Sección de Imágenes</h1>} />
+        </Routes>
       </div>
-    </div>
+    
   );
 }
 
