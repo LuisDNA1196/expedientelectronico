@@ -18,13 +18,13 @@ const Home = () => {
       </p>
       <div className="flex space-x-6">
         <Link to="/registrar">
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+          <button className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
             Registrar Paciente
           </button>
         </Link>
         <Link to="/buscar">
-          <button className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
-            Buscar Paciente
+          <button className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition">
+            Nueva nota
           </button>
         </Link>
         <Link to="/imagenes">
