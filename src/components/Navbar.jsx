@@ -5,10 +5,9 @@ const Navbar = () => {
   const [state, setState] = useState(false);
   const location = useLocation();
 
-  // Si estamos en la ruta principal, no mostrar navbar
+
   if (location.pathname === "/") return null;
 
-  // Replace javascript:void(0) paths with your paths
   const navigation = [
     { title: "Pacientes", path: "javascript:void(0)" },
     { title: "Notas", path: "javascript:void(0)" },
