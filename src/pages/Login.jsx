@@ -3,8 +3,9 @@ import SecNavBar from "../components/SecNavbar";
 const Login = () => {
   return (
     
-    <main className="min-h-screen items-center justify-center px-4 py-14">
-      <SecNavBar/>
+<>
+  <SecNavBar />
+  <main className="min-h-screen flex flex-col items-center justify-center px-4 py-14">
       <div className="max-w-screen-xl w-full text-gray-600 md:px-8">
         <div className="max-w-2xl mx-auto flex flex-col items-center text-center">
           <div className="max-w-lg space-y-3">
@@ -35,14 +36,15 @@ const Login = () => {
                 />
               </div>
              
-              <button className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
+              <a href="/home" className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
                 Ingresar al Expediente
-              </button>
+              </a>
             </form>
           </div>
         </div>
       </div>
     </main>
+    </>
   );
 };
 
