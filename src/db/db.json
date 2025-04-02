@@ -1,0 +1,133 @@
+{
+    "expedientes_medicos": [
+      {
+        "datos_personales": {
+          "nombre": "Carlos",
+          "apellido": "Ramírez Torres",
+          "sexo": "Masculino",
+          "fecha_nacimiento": "1988-06-12",
+          "edad": 36,
+          "telefono": "5551234567",
+          "correo_electronico": "carlos.ramirez@example.com",
+          "direccion": "Av. Reforma 101, CDMX"
+        },
+        "antecedentes": {
+          "personales_patologicos": ["Diabetes tipo 2"],
+          "personales_no_patologicos": ["Fumador ocasional", "Sedentario"],
+          "heredofamiliares": ["Padre con hipertensión"],
+          "alergias": ["Ninguna conocida"]
+        },
+        "motivo_de_consulta": "Fatiga constante y visión borrosa.",
+        "signos_y_sintomas": ["Cansancio", "Poliuria", "Sed excesiva"],
+        "exploracion_fisica": {
+          "signos_vitales": {
+            "frecuencia_cardiaca": "85 lpm",
+            "presion_arterial": "135/90 mmHg",
+            "temperatura": "36.8°C",
+            "frecuencia_respiratoria": "16 rpm",
+            "saturacion_oxigeno": "96%"
+          },
+          "hallazgos": {
+            "otros": "Paciente con sobrepeso, signos vitales estables"
+          }
+        },
+        "diagnostico_presuntivo": ["Descompensación diabética"],
+        "plan_diagnostico": ["Glucosa en ayuno", "HbA1c"],
+        "tratamiento": ["Metformina 850 mg cada 12h", "Control dietético"],
+        "nota_medica": "Paciente con signos de hiperglucemia. Se inicia tratamiento y seguimiento.",
+        "fecha_consulta": "2025-04-01T09:00:00",
+        "medico_responsable": {
+          "nombre": "Dra. Paula Jiménez",
+          "cedula_profesional": "11223344",
+          "especialidad": "Medicina Interna"
+        }
+      },
+      {
+        "datos_personales": {
+          "nombre": "María Fernanda",
+          "apellido": "López Gutiérrez",
+          "sexo": "Femenino",
+          "fecha_nacimiento": "1992-11-05",
+          "edad": 32,
+          "telefono": "3339876543",
+          "correo_electronico": "m.fernanda.lopez@example.com",
+          "direccion": "Calle Magnolia 45, Guadalajara, Jalisco"
+        },
+        "antecedentes": {
+          "personales_patologicos": ["Asma bronquial"],
+          "personales_no_patologicos": ["Ejercicio regular", "No fuma"],
+          "heredofamiliares": ["Hermano con rinitis alérgica"],
+          "alergias": ["Polen", "Aspirina"]
+        },
+        "motivo_de_consulta": "Dificultad para respirar durante el ejercicio.",
+        "signos_y_sintomas": ["Disnea", "Tos seca", "Sibilancias"],
+        "exploracion_fisica": {
+          "signos_vitales": {
+            "frecuencia_cardiaca": "92 lpm",
+            "presion_arterial": "118/78 mmHg",
+            "temperatura": "36.7°C",
+            "frecuencia_respiratoria": "22 rpm",
+            "saturacion_oxigeno": "94%"
+          },
+          "hallazgos": {
+            "pulmones": "Sibilancias bilaterales",
+            "otros": "Buen estado general"
+          }
+        },
+        "diagnostico_presuntivo": ["Crisis asmática leve"],
+        "plan_diagnostico": ["Espirometría", "Rx de tórax"],
+        "tratamiento": ["Salbutamol inhalado cada 6h", "Evitar alérgenos"],
+        "nota_medica": "Se indica uso de broncodilatador de rescate y seguimiento con neumología.",
+        "fecha_consulta": "2025-04-01T10:30:00",
+        "medico_responsable": {
+          "nombre": "Dr. Jorge Estrada",
+          "cedula_profesional": "77889900",
+          "especialidad": "Neumología"
+        }
+      },
+      {
+        "datos_personales": {
+          "nombre": "Lucía",
+          "apellido": "Hernández Méndez",
+          "sexo": "Femenino",
+          "fecha_nacimiento": "2000-03-23",
+          "edad": 25,
+          "telefono": "4421239988",
+          "correo_electronico": "lucia.hernandez@example.com",
+          "direccion": "Col. Centro, Querétaro, Qro."
+        },
+        "antecedentes": {
+          "personales_patologicos": ["Migraña"],
+          "personales_no_patologicos": ["Estudiante universitaria", "Duerme mal", "Bajo nivel de estrés"],
+          "heredofamiliares": ["Madre con migraña"],
+          "alergias": ["Naproxeno"]
+        },
+        "motivo_de_consulta": "Dolor de cabeza intenso con fotofobia.",
+        "signos_y_sintomas": ["Cefalea pulsátil", "Náusea", "Sensibilidad a la luz"],
+        "exploracion_fisica": {
+          "signos_vitales": {
+            "frecuencia_cardiaca": "78 lpm",
+            "presion_arterial": "110/70 mmHg",
+            "temperatura": "36.5°C",
+            "frecuencia_respiratoria": "18 rpm",
+            "saturacion_oxigeno": "99%"
+          },
+          "hallazgos": {
+            "neurologico": "Sin alteraciones neurológicas focales",
+            "otros": "Paciente alerta y orientada"
+          }
+        },
+        "diagnostico_presuntivo": ["Migraña con aura"],
+        "plan_diagnostico": ["TAC cerebral si persiste", "Diario de cefaleas"],
+        "tratamiento": ["Paracetamol 1g VO", "Evitar disparadores"],
+        "nota_medica": "Paciente joven con migraña controlada con analgésico y medidas generales. Se recomienda higiene del sueño.",
+        "fecha_consulta": "2025-04-01T11:15:00",
+        "medico_responsable": {
+          "nombre": "Dra. Mónica Rivas",
+          "cedula_profesional": "55667788",
+          "especialidad": "Medicina General"
+        }
+      }
+    ]
+  }
+  
