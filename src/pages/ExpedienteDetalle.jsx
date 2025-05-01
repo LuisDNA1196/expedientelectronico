@@ -9,9 +9,7 @@ const ExpedienteDetalle = () => {
   useEffect(() => {
     fetch(`http://localhost:3001/expedientes_medicos/${id}`)
       .then((res) => {
-        if (!res.ok) {
-          throw new Error("Expediente no encontrado");
-        }
+        if (!res.ok) throw new Error("Expediente no encontrado");
         return res.json();
       })
       .then((data) => setExpediente(data))
@@ -21,8 +19,11 @@ const ExpedienteDetalle = () => {
       });
   }, [id]);
 
-  if (error) return <div className="p-4 text-red-600">Expediente no encontrado.</div>;
-  if (!expediente) return <div className="p-4">Cargando...</div>;
+  if (error)
+    return <div className="p-6 text-red-600 text-center text-lg">⚠️ Expediente no encontrado.</div>;
+
+  if (!expediente)
+    return <div className="p-6 text-gray-600 text-center text-lg">Cargando expediente...</div>;
 
   const {
     datos_personales,
@@ -39,89 +40,97 @@ const ExpedienteDetalle = () => {
   } = expediente;
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
-      <Link to="/" className="text-indigo-600 hover:underline">← Volver</Link>
-      <h1 className="text-2xl font-bold text-gray-800">
-        {datos_personales.nombre} {datos_personales.apellido}
-      </h1>
-      <p className="text-gray-600">Edad: {datos_personales.edad} años</p>
-      <p className="text-gray-600">Sexo: {datos_personales.sexo}</p>
-      <p className="text-gray-600">Fecha de nacimiento: {datos_personales.fecha_nacimiento}</p>
-      <p className="text-gray-600">Teléfono: {datos_personales.telefono}</p>
-      <p className="text-gray-600">Correo: {datos_personales.correo_electronico}</p>
-      <p className="text-gray-600">Dirección: {datos_personales.direccion}</p>
+    <div className="max-w-5xl mx-auto px-6 py-10 space-y-8">
+      <Link to="/pacientes" className="inline-block text-indigo-600 hover:text-indigo-800 transition text-sm mb-4">
+        ← Volver a la lista
+      </Link>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Antecedentes</h2>
-        <p><strong>Patológicos:</strong> {antecedentes.personales_patologicos.join(", ")}</p>
-        <p><strong>No patológicos:</strong> {antecedentes.personales_no_patologicos.join(", ")}</p>
-        <p><strong>Heredofamiliares:</strong> {antecedentes.heredofamiliares.join(", ")}</p>
-        <p><strong>Alergias:</strong> {antecedentes.alergias.join(", ")}</p>
+      <div className="bg-white shadow rounded-xl p-6">
+        <h1 className="text-2xl font-bold text-gray-800 mb-2">
+          {datos_personales.nombre} {datos_personales.apellido}
+        </h1>
+        <p className="text-gray-600 mb-1">Edad: <strong>{datos_personales.edad}</strong> años</p>
+        <p className="text-gray-600 mb-1">Sexo: {datos_personales.sexo}</p>
+        <p className="text-gray-600 mb-1">Nacimiento: {datos_personales.fecha_nacimiento}</p>
+        <p className="text-gray-600 mb-1">📞 {datos_personales.telefono}</p>
+        <p className="text-gray-600 mb-1">📧 {datos_personales.correo_electronico}</p>
+        <p className="text-gray-600">🏠 {datos_personales.direccion}</p>
       </div>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Motivo de consulta</h2>
-        <p>{motivo_de_consulta}</p>
-      </div>
+      <div className="grid md:grid-cols-2 gap-6">
+        <Card title="Antecedentes">
+          <p><strong>Patológicos:</strong> {antecedentes.personales_patologicos.join(", ")}</p>
+          <p><strong>No patológicos:</strong> {antecedentes.personales_no_patologicos.join(", ")}</p>
+          <p><strong>Heredofamiliares:</strong> {antecedentes.heredofamiliares.join(", ")}</p>
+          <p><strong>Alergias:</strong> {antecedentes.alergias.join(", ")}</p>
+        </Card>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Signos y síntomas</h2>
-        <ul className="list-disc list-inside">
-          {signos_y_sintomas.map((s, i) => <li key={i}>{s}</li>)}
-        </ul>
-      </div>
+        <Card title="Exploración física">
+          {Object.entries(exploracion_fisica.signos_vitales).map(([key, val]) => (
+            <p key={key}><strong>{formatoTexto(key)}:</strong> {val}</p>
+          ))}
+          {exploracion_fisica.hallazgos &&
+            Object.entries(exploracion_fisica.hallazgos).map(([key, val]) => (
+              <p key={key}><strong>{formatoTexto(key)}:</strong> {val}</p>
+            ))}
+        </Card>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Exploración física</h2>
-        <p><strong>Frecuencia cardíaca:</strong> {exploracion_fisica.signos_vitales.frecuencia_cardiaca}</p>
-        <p><strong>Presión arterial:</strong> {exploracion_fisica.signos_vitales.presion_arterial}</p>
-        <p><strong>Temperatura:</strong> {exploracion_fisica.signos_vitales.temperatura}</p>
-        <p><strong>Frecuencia respiratoria:</strong> {exploracion_fisica.signos_vitales.frecuencia_respiratoria}</p>
-        <p><strong>Saturación de oxígeno:</strong> {exploracion_fisica.signos_vitales.saturacion_oxigeno}</p>
-        {exploracion_fisica.hallazgos && Object.entries(exploracion_fisica.hallazgos).map(([clave, valor]) => (
-          <p key={clave}><strong>{clave}:</strong> {valor}</p>
-        ))}
-      </div>
+        <Card title="Motivo de consulta">
+          <p>{motivo_de_consulta}</p>
+        </Card>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Diagnóstico presuntivo</h2>
-        <ul className="list-disc list-inside">
-          {diagnostico_presuntivo.map((d, i) => <li key={i}>{d}</li>)}
-        </ul>
-      </div>
+        <Card title="Signos y síntomas">
+          <ul className="list-disc pl-5 text-gray-700">
+            {signos_y_sintomas.map((s, i) => <li key={i}>{s}</li>)}
+          </ul>
+        </Card>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Plan diagnóstico</h2>
-        <ul className="list-disc list-inside">
-          {plan_diagnostico.map((p, i) => <li key={i}>{p}</li>)}
-        </ul>
-      </div>
+        <Card title="Diagnóstico presuntivo">
+          <ul className="list-disc pl-5 text-gray-700">
+            {diagnostico_presuntivo.map((d, i) => <li key={i}>{d}</li>)}
+          </ul>
+        </Card>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Tratamiento</h2>
-        <ul className="list-disc list-inside">
-          {tratamiento.map((t, i) => <li key={i}>{t}</li>)}
-        </ul>
-      </div>
+        <Card title="Plan diagnóstico">
+          <ul className="list-disc pl-5 text-gray-700">
+            {plan_diagnostico.map((p, i) => <li key={i}>{p}</li>)}
+          </ul>
+        </Card>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Nota médica</h2>
-        <p>{nota_medica}</p>
-      </div>
+        <Card title="Tratamiento">
+          <ul className="list-disc pl-5 text-gray-700">
+            {tratamiento.map((t, i) => <li key={i}>{t}</li>)}
+          </ul>
+        </Card>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Consulta</h2>
-        <p><strong>Fecha:</strong> {new Date(fecha_consulta).toLocaleString()}</p>
-      </div>
+        <Card title="Nota médica">
+          <p className="text-gray-700">{nota_medica}</p>
+        </Card>
 
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Médico responsable</h2>
-        <p><strong>Nombre:</strong> {medico_responsable.nombre}</p>
-        <p><strong>Cédula profesional:</strong> {medico_responsable.cedula_profesional}</p>
-        <p><strong>Especialidad:</strong> {medico_responsable.especialidad}</p>
+        <Card title="Consulta">
+          <p><strong>Fecha:</strong> {new Date(fecha_consulta).toLocaleString()}</p>
+        </Card>
+
+        <Card title="Médico responsable">
+          <p><strong>Nombre:</strong> {medico_responsable.nombre}</p>
+          <p><strong>Cédula:</strong> {medico_responsable.cedula_profesional}</p>
+          <p><strong>Especialidad:</strong> {medico_responsable.especialidad}</p>
+        </Card>
       </div>
     </div>
   );
 };
+
+// Reusable card component
+const Card = ({ title, children }) => (
+  <div className="bg-white shadow rounded-lg p-5 space-y-2">
+    <h3 className="text-lg font-semibold text-indigo-700 mb-2">{title}</h3>
+    {children}
+  </div>
+);
+
+// Capitaliza claves como "frecuencia_respiratoria"
+const formatoTexto = (texto) =>
+  texto.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
 
 export default ExpedienteDetalle;
