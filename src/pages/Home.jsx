@@ -17,9 +17,9 @@ const Home = () => {
         Seleccione una opción para continuar:
       </p>
       <div className="flex space-x-6">
-        <Link to="/registrar">
+        <Link to="/pacientes">
           <button className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
-            Registrar Paciente
+            Ver Pacientes
           </button>
         </Link>
         <Link to="/buscar">
