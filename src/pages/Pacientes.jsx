@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import.meta.env.MODE
+
 
 const ListaPacientes = () => {
   const [expedientes, setExpedientes] = useState([]);
 
   // Carga de datos desde json-server
   useEffect(() => {
-    fetch("http://localhost:3001/expedientes_medicos")
+    const API_URL =
+  import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_API_URL
+    : "/api/expedientes";
+
+  
+    fetch(API_URL)
       .then((res) => res.json())
       .then((data) => setExpedientes(data))
       .catch((err) => console.error("Error al obtener datos:", err));
   }, []);
+  
 
   return (
     <section className="py-16">
