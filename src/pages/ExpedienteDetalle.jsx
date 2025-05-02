@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router";
 import { useEffect, useState } from "react";
+import datosExpedientes from "../db/expedientes";
 
 const ExpedienteDetalle = () => {
   const { id } = useParams();
@@ -7,16 +8,15 @@ const ExpedienteDetalle = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/expedientes_medicos/${id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Expediente no encontrado");
-        return res.json();
-      })
-      .then((data) => setExpediente(data))
-      .catch((err) => {
-        console.error("Error al obtener el expediente:", err);
-        setError(true);
-      });
+    const expedienteEncontrado = datosExpedientes.find(
+      (_, index) => index + 1 === parseInt(id)
+    );
+
+    if (expedienteEncontrado) {
+      setExpediente(expedienteEncontrado);
+    } else {
+      setError(true);
+    }
   }, [id]);
 
   if (error)

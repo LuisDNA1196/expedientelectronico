@@ -1,25 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import.meta.env.MODE
+import datosExpedientes from "../db/expedientes";
 
-
-const ListaPacientes = () => {
+const Pacientes = () => {
   const [expedientes, setExpedientes] = useState([]);
 
-  // Carga de datos desde json-server
   useEffect(() => {
-    const API_URL =
-  import.meta.env.MODE === "development"
-    ? import.meta.env.VITE_API_URL
-    : "/api/expedientes";
-
-  
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => setExpedientes(data))
-      .catch((err) => console.error("Error al obtener datos:", err));
+    setExpedientes(datosExpedientes);
   }, []);
-  
 
   return (
     <section className="py-16">
@@ -75,4 +63,4 @@ const ListaPacientes = () => {
   );
 };
 
-export default ListaPacientes;
+export default Pacientes;
