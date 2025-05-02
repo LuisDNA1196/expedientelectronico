@@ -9,7 +9,7 @@ const Navbar = () => {
   if (location.pathname === "/") return null;
 
   const navigation = [
-    { title: "Pacientes", path: "javascript:void(0)" },
+    { title: "Pacientes", path: "/pacientes" },
     { title: "Notas", path: "javascript:void(0)" },
     { title: "Medicamento", path: "javascript:void(0)" },
   ];
@@ -24,7 +24,7 @@ const Navbar = () => {
     >
       <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
         <div className="flex items-center justify-between py-5 md:block">
-          <a href="javascript:void(0)">
+          <a href="/home">
             <p className="text-2xl font-bold text-gray-800 tracking-wide">
               Expediente Médico
             </p>
